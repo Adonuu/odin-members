@@ -1,11 +1,17 @@
 <html>
   <head>
-    <title>Homepage</title>
+    <title>Join</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/topbar.css">
     <link rel="stylesheet" href="/signup.css">
   </head>
   <body>
     <%- include('topbar', {user : user}) %>
+    <form action="/users/join" method="POST">
+      <label for="passcode">Passcode:</label>
+      <input id="passcode" name="passcode" type="text" required>
+  
+      <button type="submit">Join</button>
+  </form>
   </body>
 </html>

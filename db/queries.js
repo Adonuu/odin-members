@@ -8,6 +8,15 @@ async function createUser(firstName, lastName, email, password) {
     return result.rows[0];
 }
 
+async function updateUserMembership(email) {
+    const result = await pool.query(
+        `UPDATE users SET membership = $1 WHERE email = $2 RETURNING *;`,
+        [2, email] // 2 means member
+    );
+    return result.rows[0];
+}
+
 module.exports = {
-    createUser
+    createUser,
+    updateUserMembership
 };

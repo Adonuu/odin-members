@@ -32,4 +32,21 @@ const createUser = async (req, res) => {
     }
 };
 
-module.exports = { createUser };
+const updateUserMembership = async (req, res) => {
+    const username = res.locals.currentUser.email;
+    const passcode = req.body.passcode;
+    if (passcode === "membersonly")
+    {
+        await db.updateUserMembership(username);
+        res.redirect("/");
+    }
+    else
+    {
+        res.status(500).json({ 
+            success: false, 
+            message: "passcode incorrect", 
+        });
+    }
+}
+
+module.exports = { createUser, updateUserMembership };

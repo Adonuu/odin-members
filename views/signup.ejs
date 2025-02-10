@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/signup.css">
   </head>
   <body>
-    <%- include('topbar') %>
+    <%- include('topbar', {user : user}) %>
     <form action="/users/signup" method="POST">
       <label for="firstName">First Name:</label>
       <input id="firstName" name="firstName" type="text" required>

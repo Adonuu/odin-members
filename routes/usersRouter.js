@@ -16,5 +16,6 @@ userRouter.post("/signup",
     ],
     userController.createUser
 );
+userRouter.post("/join", userController.updateUserMembership)
 
 module.exports = userRouter;
