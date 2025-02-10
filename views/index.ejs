@@ -6,6 +6,18 @@
     <link rel="stylesheet" href="/signup.css">
   </head>
   <body>
-    <%- include('topbar', {user : user}) %>
+    <%- include('topbar', {user: user}) %>
+    <div class="messages">
+      <% messages.forEach(function(message) { %>
+        <div class="message">
+          <h3><%= message.title %></h3>
+          <% if (user != null && user.membership === 2) { %>
+            <p>Author: <%= message.firstname %> <%= message.lastname %></p>
+            <p>Date: <%= message.timestamp %></p>
+          <% } %>
+          <p><%= message.message %></p>
+        </div>
+      <% }); %>
+    </div>
   </body>
 </html>

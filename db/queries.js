@@ -28,9 +28,20 @@ async function createMessage(title, message, userId) {
     return result.rows[0]; // Returns the created message
 }
 
+async function getMessages() {
+    const result = await pool.query(`
+        SELECT messages.*, users.firstname, users.lastname
+        FROM messages
+        JOIN users ON messages.user_id = users.id;
+    `);
+    return result.rows;  // This will return all messages with user info
+}
+
+
 
 module.exports = {
     createUser,
     updateUserMembership,
-    createMessage
+    createMessage,
+    getMessages
 };

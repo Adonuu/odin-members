@@ -7,6 +7,7 @@ dotenv.config();
 const LocalStrategy = require('passport-local').Strategy;
 const pool = require("./db/pool");
 const app = express();
+const db = require("./db/queries");
 
 const userRouter = require("./routes/usersRouter");
 const messageRouter = require("./routes/messageRouter");
@@ -61,8 +62,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/", (req, res) => {
-    res.render("index", { user: res.locals.currentUser });
+app.get("/", async (req, res) => {
+    const messages = await db.getMessages();
+    res.render("index", { user: res.locals.currentUser, messages: messages });
 });
 app.get("/signup",(req, res) => {
     res.render("signup", { user: res.locals.currentUser });
