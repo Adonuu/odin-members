@@ -16,7 +16,21 @@ async function updateUserMembership(email) {
     return result.rows[0];
 }
 
+async function createMessage(title, message, userId) {
+    // Insert the message
+    const result = await pool.query(
+        `INSERT INTO messages (title, message, user_id)  
+         VALUES ($1, $2, $3)  
+         RETURNING *;`,
+        [title, message, userId]
+    );
+
+    return result.rows[0]; // Returns the created message
+}
+
+
 module.exports = {
     createUser,
-    updateUserMembership
+    updateUserMembership,
+    createMessage
 };

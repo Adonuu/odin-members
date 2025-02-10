@@ -3,6 +3,7 @@
     <div class="links">
         <% if (user) { %>
             <span>Welcome, <%= user.firstname %> <%= user.lastname %></span>
+            <a href="/createMessage">Create Message</a>
             <a href="/join">Join</a>
             <a href="/logout">Logout</a>
         <% } else { %>

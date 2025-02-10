@@ -9,6 +9,7 @@ const pool = require("./db/pool");
 const app = express();
 
 const userRouter = require("./routes/usersRouter");
+const messageRouter = require("./routes/messageRouter");
 
 
 app.set("view engine", "ejs");
@@ -81,7 +82,11 @@ app.get("/logout", (req, res, next) => {
 app.get("/join", (req, res) => {
     res.render("join", {user: res.locals.currentUser });
 });
+app.get("/createMessage", (req, res) => {
+    res.render("createMessage", { user: res.locals.currentUser });
+})
 app.use("/users", userRouter);
+app.use("/message", messageRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Express app listening on port ${PORT}!`));

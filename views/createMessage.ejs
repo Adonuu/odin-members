@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Create Message</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/topbar.css">
+    <link rel="stylesheet" href="/signup.css">
+  </head>
+  <body>
+    <%- include('topbar', {user : user}) %>
+    <form action="/message/create" method="POST">
+        <input type="hidden" name="user" value="<%= user ? user.id : '' %>">
+        <label for="title">Title</label>
+        <input id="title" name="title" placeholder="title" type="text" />
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" cols="125"></textarea>
+        <button>Create</button>
+    </form>
+  </body>
+</html>
