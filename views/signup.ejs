@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/topbar.css">
+    <link rel="stylesheet" href="/signup.css">
+  </head>
+  <body>
+    <%- include('topbar') %>
+    <form action="/users/signup" method="POST">
+      <label for="firstName">First Name:</label>
+      <input id="firstName" name="firstName" type="text" required>
+  
+      <label for="lastName">Last Name:</label>
+      <input id="lastName" name="lastName" type="text" required>
+  
+      <label for="email">Email:</label>
+      <input id="email" name="email" type="email" required>
+  
+      <label for="password">Password:</label>
+      <input id="password" name="password" type="password" required>
+  
+      <label for="confirmPassword">Confirm Password:</label>
+      <input id="confirmPassword" name="passwordConfirmation" type="password" required>
+  
+      <button type="submit">Register</button>
+  </form>
+  </body>
+</html>

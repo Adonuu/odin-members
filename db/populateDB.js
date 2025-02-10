@@ -12,7 +12,7 @@ const createMembershipTable = createTableQuery(
 
 const createUsersTable = createTableQuery(
     "users",
-    "id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, firstName VARCHAR(255), lastName VARCHAR(255), email VARCHAR(255), password VARCHAR(255), membership INT REFERENCES membership(id)"
+    "id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, firstName VARCHAR(255), lastName VARCHAR(255), email VARCHAR(255), password_hash VARCHAR(255), membership INT REFERENCES membership(id)"
 );
 
 const createMessagesTable = createTableQuery(
