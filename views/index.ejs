@@ -10,8 +10,11 @@
     <div class="messages">
       <% messages.forEach(function(message) { %>
         <div class="message">
+          <% if (user != null && user.membership === 3) { %>
+            <a href="/deleteMessage/<%= message.id %>" class="delete-button">X</a>
+          <% } %>
           <h3><%= message.title %></h3>
-          <% if (user != null && user.membership === 2) { %>
+          <% if (user != null && user.membership >= 2) { %>
             <p>Author: <%= message.firstname %> <%= message.lastname %></p>
             <p>Date: <%= message.timestamp %></p>
           <% } %>

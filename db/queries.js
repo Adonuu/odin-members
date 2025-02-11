@@ -16,6 +16,14 @@ async function updateUserMembership(email) {
     return result.rows[0];
 }
 
+async function updateUserMembershipToAdmin(email) {
+    const result = await pool.query(
+        `UPDATE users SET membership = $1 WHERE email = $2 RETURNING *;`,
+        [3, email] // 2 means admin
+    );
+    return result.rows[0];
+}
+
 async function createMessage(title, message, userId) {
     // Insert the message
     const result = await pool.query(
@@ -37,11 +45,19 @@ async function getMessages() {
     return result.rows;  // This will return all messages with user info
 }
 
+async function deleteMessage(id) {
+    const result = await pool.query(`
+        DELETE FROM MESSAGES WHERE id = $1`, [id]);
+    return result.rows[0];
+}
+
 
 
 module.exports = {
     createUser,
     updateUserMembership,
+    updateUserMembershipToAdmin,
     createMessage,
-    getMessages
+    getMessages,
+    deleteMessage
 };

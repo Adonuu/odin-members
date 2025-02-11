@@ -24,3 +24,10 @@ body {
     max-width: 35ch;
     word-wrap: break-word;
 }
+
+.message > a {
+    text-align: end;
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+}

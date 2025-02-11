@@ -40,6 +40,11 @@ const updateUserMembership = async (req, res) => {
         await db.updateUserMembership(username);
         res.redirect("/");
     }
+    else if (passcode === "admin")
+    {
+        await db.updateUserMembershipToAdmin(username);
+        res.redirect("/");
+    }
     else
     {
         res.status(500).json({ 

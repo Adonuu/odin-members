@@ -87,6 +87,11 @@ app.get("/join", (req, res) => {
 app.get("/createMessage", (req, res) => {
     res.render("createMessage", { user: res.locals.currentUser });
 })
+app.get("/deleteMessage/:id", async (req, res) => {
+    const messageId = req.params.id;
+    await db.deleteMessage(messageId);
+    res.redirect("/");
+})
 app.use("/users", userRouter);
 app.use("/message", messageRouter);
 
